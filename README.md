@@ -2,12 +2,6 @@
 
 This project is a fullstack application with a Go backend and a React frontend.
 
-## Additional Information
-
-This is an arbitrary update to the README file to verify changes.
-
-This project is a fullstack application with a Go backend and a React frontend.
-
 ## Backend
 - The backend is built using Go and provides an API.
 - It uses SQLite for database management.
