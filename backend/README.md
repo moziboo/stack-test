@@ -1,5 +1,7 @@
 # Backend Structure (Go)
 
+<!-- This is a test change for the PR flow. -->
+
 This backend uses idiomatic Go project layout:
 
 ```
