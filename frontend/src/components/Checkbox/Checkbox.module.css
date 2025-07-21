@@ -1,24 +1,12 @@
 .Root {
-  all: unset;
-  background-color: white;
-  width: 25px;
-  height: 25px;
-  border-radius: 4px;
-  display: flex;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #161616FF;
+  border-radius: 7px 7px 7px 7px;
+  overflow: hidden;
   align-items: center;
+  align-content: stretch;
   justify-content: center;
-  box-shadow: 0 2px 10px var(--black-a7);
-  &:hover {
-    background-color: var(--violet-3);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 2px black;
-  }
-}
-
-.Indicator {
-  color: var(--violet-11);
 }
 
 .Label {

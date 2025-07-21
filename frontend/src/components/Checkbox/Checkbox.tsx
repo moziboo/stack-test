@@ -11,7 +11,9 @@ const CheckboxDemo = () => {
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', border: '1px solid red' }}>
+    <div
+      style={{ maxWidth: '400px', display: 'flex', alignItems: 'center', border: '1px solid red' }}
+    >
       <Checkbox.Root
         checked={checked}
         onCheckedChange={handleCheckedChange}
