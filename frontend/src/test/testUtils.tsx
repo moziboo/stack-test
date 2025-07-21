@@ -4,10 +4,7 @@ import type { RenderOptions } from '@testing-library/react';
 import { AppProvider } from '../context/AppContext';
 
 // Custom renderer that includes providers
-export function renderWithProviders(
-  ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>
-) {
+export function renderWithProviders(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) {
   return render(ui, {
     wrapper: ({ children }) => <AppProvider>{children}</AppProvider>,
     ...options,
@@ -29,4 +26,4 @@ export const createMockPost = (overrides = {}) => ({
   createdAt: '2023-01-01T00:00:00Z',
   author: createMockUser(),
   ...overrides,
-}); 
+});

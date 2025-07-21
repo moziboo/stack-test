@@ -6,11 +6,11 @@
 - jestdom
 - css modules
 - eslint (setup questions)
-- prettier (need)
+- prettier (setup question)
 - typescript (setup questions)
 - storybook (need)
 - react-router (need)
 - app context (setup questions)
 - auth (?)
 - payment (?)
-- radix (questions)
+- radix got bought out so keep an eye on baseui

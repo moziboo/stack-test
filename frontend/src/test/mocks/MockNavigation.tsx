@@ -10,10 +10,10 @@ interface MockNavigationProps {
   onNavigate?: (path: string) => void;
 }
 
-const MockNavigation: FC<MockNavigationProps> = ({ 
-  children, 
+const MockNavigation: FC<MockNavigationProps> = ({
+  children,
   currentPath = '/',
-  onNavigate = () => {} 
+  onNavigate = () => {},
 }) => {
   return (
     <nav data-testid="mock-navigation" data-current-path={currentPath}>
@@ -33,4 +33,4 @@ const MockNavigation: FC<MockNavigationProps> = ({
   );
 };
 
-export default MockNavigation; 
+export default MockNavigation;

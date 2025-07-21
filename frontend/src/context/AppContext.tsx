@@ -19,9 +19,5 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  return (
-    <AppContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </AppContext.Provider>
-  );
-}; 
+  return <AppContext.Provider value={{ theme, toggleTheme }}>{children}</AppContext.Provider>;
+};

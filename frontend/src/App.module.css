@@ -27,4 +27,4 @@
   composes: baseButton from './Shared.module.css';
   composes: primaryColor from './Shared.module.css';
   /* Add any additional styles specific to this button if needed */
-} 
+}
