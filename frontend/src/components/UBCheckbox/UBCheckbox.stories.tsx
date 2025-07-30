@@ -32,6 +32,14 @@ export const CheckedWithLabel: Story = {
   render: args => <UBCheckbox {...args} />,
 };
 
+export const CheckedWithLabelDisabled: Story = {
+  args: {
+    checked: true,
+    disabled: true,
+  },
+  render: args => <UBCheckbox {...args} />,
+};
+
 export const UncheckedWithLabel: Story = {
   render: args => <UBCheckbox {...args} />,
 };

@@ -16,6 +16,12 @@ button {
   cursor: pointer;
 }
 
+.checkboxRoot.disabled {
+  border-color: var(--color-disabled);
+  background-color: var(--color-disabled);
+  cursor: not-allowed;
+}
+
 .checkboxRoot:hover {
   box-shadow: var(--shadow-sm);
 }
@@ -33,6 +39,12 @@ button {
   background-color: var(--color-background);
 }
 
+.disabled {
+  border-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
 .checkboxIndicator {
   color: var(--color-primary-contrast);
   font-size: var(--font-size-xl);
@@ -45,4 +57,10 @@ button {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   cursor: pointer;
+}
+
+.label.disabled {
+  border-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
 }
