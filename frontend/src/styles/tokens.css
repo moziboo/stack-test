@@ -1,0 +1,64 @@
+/* Design Tokens - Shared CSS Variables */
+
+:root {
+  /* Colors */
+  --color-primary: #000000;
+  --color-primary-contrast: #ffffff;
+  --color-background: #ffffff;
+  --color-background-secondary: #f5f5f5;
+  --color-border: #000000;
+  --color-text-primary: #000000;
+  --color-text-secondary: #666666;
+  --color-disabled: #cccccc;
+  --color-disabled-text: #999999;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 25px;
+  --spacing-xl: 32px;
+
+  /* Typography */
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 23px;
+  --line-height-base: 1;
+  --line-height-relaxed: 1.5;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 7px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Form Elements */
+  --form-element-size: 25px;
+  --form-element-border-width: 2px;
+
+  /* Focus States */
+  --focus-ring-width: 2px;
+  --focus-ring-color: rgba(0, 123, 255, 0.5);
+  --focus-ring-offset: 2px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* Dark theme tokens (example) */
+[data-theme='dark'] {
+  --color-primary: #ffffff;
+  --color-primary-contrast: #000000;
+  --color-background: #1a1a1a;
+  --color-background-secondary: #2a2a2a;
+  --color-border: #ffffff;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cccccc;
+}
