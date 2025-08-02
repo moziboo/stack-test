@@ -1,8 +1,12 @@
 import type { User, Post, ApiResponse } from '../../types';
 import { createMockUser, createMockPost } from '../testUtils';
 
-// Mock API service for testing
-// This allows tests to run without actual API calls
+// Legacy Mock API service for testing
+// NOTE: This is now replaced by MSW handlers in ./handlers.ts
+// This file is kept for reference and backward compatibility
+//
+// With MSW, you can now use your actual apiClient and it will be intercepted
+// automatically. This provides more realistic testing than direct function mocks.
 
 export const mockApiService = {
   // Mock users endpoint

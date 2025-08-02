@@ -22,16 +22,27 @@ button {
 .radioGroupItem {
   width: var(--form-element-size);
   height: var(--form-element-size);
-  border-radius: 0 var(--radius-md);
+  border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
   border: var(--form-element-border-width) solid var(--color-border);
   color: var(--color-primary-contrast);
   font-size: var(--font-size-xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-1px);
-  transition: var(--transition-fast);
   cursor: pointer;
+}
+
+.radioGroupItemIndicator {
+  transform: translateY(-1px);
+}
+
+.radioGroupItem.disabled {
+  border-color: var(--color-disabled);
+  cursor: not-allowed;
+}
+
+.radioGroupItem.selected.disabled {
+  background-color: var(--color-disabled);
 }
 
 .radioGroupItem:hover {
@@ -51,14 +62,16 @@ button {
   background-color: var(--color-background);
 }
 
-.radioGroupIndicator {
-  transform: translateY(-1px);
-}
-
 .label {
   color: var(--color-text-primary);
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   padding-left: var(--spacing-sm);
   cursor: pointer;
+}
+
+.label.disabled {
+  border-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
 }

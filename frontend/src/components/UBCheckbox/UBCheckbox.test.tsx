@@ -5,28 +5,36 @@ import UBCheckbox from './UBCheckbox';
 
 describe('UBCheckbox', () => {
   it('renders checkbox with label', () => {
-    render(<UBCheckbox checked={false} label="Accept terms" />);
+    const handleChange = vi.fn();
+
+    render(<UBCheckbox checked={false} label="Accept terms" onCheckedChange={handleChange} />);
 
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
     expect(screen.getByLabelText('Accept terms')).toBeInTheDocument();
   });
 
   it('renders checkbox without label', () => {
-    render(<UBCheckbox checked={false} />);
+    const handleChange = vi.fn();
+
+    render(<UBCheckbox checked={false} onCheckedChange={handleChange} />);
 
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
     expect(screen.queryByRole('text')).not.toBeInTheDocument();
   });
 
   it('renders checked state correctly', () => {
-    render(<UBCheckbox checked={true} label="Accept terms" />);
+    const handleChange = vi.fn();
+
+    render(<UBCheckbox checked={true} label="Accept terms" onCheckedChange={handleChange} />);
 
     const checkbox = screen.getByRole('checkbox');
     expect(checkbox).toBeChecked();
   });
 
   it('renders unchecked state correctly', () => {
-    render(<UBCheckbox checked={false} label="Accept terms" />);
+    const handleChange = vi.fn();
+
+    render(<UBCheckbox checked={false} label="Accept terms" onCheckedChange={handleChange} />);
 
     const checkbox = screen.getByRole('checkbox');
     expect(checkbox).not.toBeChecked();
@@ -79,7 +87,16 @@ describe('UBCheckbox', () => {
   });
 
   it('uses custom id when provided', () => {
-    render(<UBCheckbox checked={false} label="Accept terms" id="custom-id" />);
+    const handleChange = vi.fn();
+
+    render(
+      <UBCheckbox
+        checked={false}
+        label="Accept terms"
+        id="custom-id"
+        onCheckedChange={handleChange}
+      />
+    );
 
     const checkbox = screen.getByRole('checkbox');
     expect(checkbox).toHaveAttribute('id', 'custom-id');
@@ -89,7 +106,9 @@ describe('UBCheckbox', () => {
   });
 
   it('generates unique id when not provided', () => {
-    render(<UBCheckbox checked={false} label="Accept terms" />);
+    const handleChange = vi.fn();
+
+    render(<UBCheckbox checked={false} label="Accept terms" onCheckedChange={handleChange} />);
 
     const checkbox = screen.getByRole('checkbox');
     const checkboxId = checkbox.getAttribute('id');

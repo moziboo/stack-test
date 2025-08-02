@@ -6,10 +6,10 @@ import { useState } from 'react';
 type UBRadioGroupProps = ComponentProps<typeof UBRadioGroup>;
 
 const meta: Meta<UBRadioGroupProps> = {
-  title: 'UBRadioGroup',
+  title: 'UtilityBelt/UBRadioGroup',
   component: UBRadioGroup,
   argTypes: {
-    defaultValue: { control: 'text' },
+    value: { control: 'text' },
   },
 };
 
@@ -18,16 +18,15 @@ export default meta;
 type Story = StoryObj<UBRadioGroupProps>;
 
 const StoryWrapper = (args: UBRadioGroupProps) => {
-  const [value, setValue] = useState('first');
+  const [value, setValue] = useState('second');
   return <UBRadioGroup {...args} value={value} onValueChange={setValue} />;
 };
 
-export const DemoVertical: Story = {
+export const VerticalUseState: Story = {
   parameters: {
     controls: { disable: true },
   },
   args: {
-    value: 'first',
     options: [
       { value: 'first', label: 'First' },
       { value: 'second', label: 'Second' },
@@ -38,18 +37,30 @@ export const DemoVertical: Story = {
   render: args => <StoryWrapper {...args} />,
 };
 
-export const DemoHorizontal: Story = {
+export const HorizontalUseState: Story = {
   parameters: {
     controls: { disable: true },
   },
   args: {
-    value: 'first',
     options: [
       { value: 'first', label: 'First' },
       { value: 'second', label: 'Second' },
       { value: 'third', label: 'Third' },
     ],
     direction: 'row',
+  },
+  render: args => <StoryWrapper {...args} />,
+};
+
+export const VerticalDisabled: Story = {
+  args: {
+    options: [
+      { value: 'first', label: 'First' },
+      { value: 'second', label: 'Second' },
+      { value: 'third', label: 'Third' },
+    ],
+    direction: 'column',
+    disabled: true,
   },
   render: args => <StoryWrapper {...args} />,
 };

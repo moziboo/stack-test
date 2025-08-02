@@ -1,10 +1,10 @@
 import { useId } from 'react';
-import { Checkbox } from 'radix-ui';
+import { Checkbox, Label } from 'radix-ui';
 import styles from './UBCheckbox.module.css';
 
 interface UBCheckboxProps {
   checked: boolean;
-  onCheckedChange?: (checked: boolean) => void;
+  onCheckedChange: (checked: boolean) => void;
   label?: string;
   id?: string;
   disabled?: boolean;
@@ -26,12 +26,12 @@ const UBCheckbox = ({ checked, onCheckedChange, label, id, disabled }: UBCheckbo
         <Checkbox.Indicator className={styles.checkboxIndicator}>*</Checkbox.Indicator>
       </Checkbox.Root>
       {label && (
-        <label
+        <Label.Root
           className={`${styles.label} ${disabled ? styles.disabled : ''}`}
           htmlFor={checkboxId}
         >
           {label}
-        </label>
+        </Label.Root>
       )}
     </div>
   );

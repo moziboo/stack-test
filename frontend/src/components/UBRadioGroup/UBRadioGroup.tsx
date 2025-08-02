@@ -1,4 +1,5 @@
-import { RadioGroup } from 'radix-ui';
+import { useId } from 'react';
+import { RadioGroup, Label } from 'radix-ui';
 import styles from './UBRadioGroup.module.css';
 
 interface RadioOption {
@@ -9,45 +10,56 @@ interface RadioOption {
 
 interface UBRadioGroupProps {
   options: RadioOption[];
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
+  value: string;
+  onValueChange: (value: string) => void;
   ariaLabel?: string;
   direction?: 'column' | 'row';
+  disabled?: boolean;
 }
 
 const UBRadioGroup = ({
   options,
-  defaultValue,
   value,
   onValueChange,
   ariaLabel,
   direction = 'column',
-}: UBRadioGroupProps) => (
-  <RadioGroup.Root
-    className={`${styles.radioGroupRoot} ${styles[direction]}`}
-    defaultValue={defaultValue}
-    value={value}
-    onValueChange={onValueChange}
-    aria-label={ariaLabel}
-  >
-    {options.map((option, index) => (
-      <div key={option.value} style={{ display: 'flex', alignItems: 'center' }}>
-        <RadioGroup.Item
-          className={`${styles.radioGroupItem} ${
-            value === option.value ? styles.selected : styles.unselected
-          }`}
-          value={option.value}
-          id={option.id || `radio-${option.value}-${index}`}
-        >
-          <div className={styles.radioGroupIndicator}>*</div>
-        </RadioGroup.Item>
-        <label className={styles.label} htmlFor={option.id || `radio-${option.value}-${index}`}>
-          {option.label}
-        </label>
-      </div>
-    ))}
-  </RadioGroup.Root>
-);
+  disabled = false,
+}: UBRadioGroupProps) => {
+  const generatedId = useId();
+
+  return (
+    <RadioGroup.Root
+      className={`${styles.radioGroupRoot} ${styles[direction]}`}
+      value={value}
+      onValueChange={onValueChange}
+      aria-label={ariaLabel}
+      disabled={disabled}
+    >
+      {options.map((option, index) => {
+        const radioId = option.id || `${generatedId}-${index}`;
+
+        return (
+          <div key={option.value} style={{ display: 'flex', alignItems: 'center' }}>
+            <RadioGroup.Item
+              className={`${styles.radioGroupItem} ${
+                value === option.value ? styles.selected : styles.unselected
+              } ${disabled ? styles.disabled : ''}`}
+              value={option.value}
+              id={radioId}
+            >
+              <span className={styles.radioGroupItemIndicator}>*</span>
+            </RadioGroup.Item>
+            <Label.Root
+              className={`${styles.label}  ${disabled ? styles.disabled : ''}`}
+              htmlFor={radioId}
+            >
+              {option.label}
+            </Label.Root>
+          </div>
+        );
+      })}
+    </RadioGroup.Root>
+  );
+};
 
 export default UBRadioGroup;

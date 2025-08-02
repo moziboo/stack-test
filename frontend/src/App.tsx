@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import { useAppContext } from './hooks/useAppContext';
 import UBCheckbox from './components/UBCheckbox';
 import UBRadioGroup from './components/UBRadioGroup';
+import { ApiDemo } from './components/ApiDemo';
 import { useState } from 'react';
 
 function AppContent() {
@@ -32,6 +33,7 @@ function AppContent() {
           ]}
         />
         <Home />
+        <ApiDemo />
       </main>
     </div>
   );
