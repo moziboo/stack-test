@@ -2,7 +2,7 @@
 .inputWrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
 }
 
 /* Label Styles */
@@ -22,15 +22,15 @@
 /* Input Styles */
 .input {
   width: 100%;
+  min-width: 300px;
   height: var(--form-element-size);
   padding: 0 var(--spacing-sm);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
   background-color: var(--color-background);
   border: var(--form-element-border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  transition: var(--transition-fast);
+  border-radius: 0;
   cursor: text;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .input:focus {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline: var(--focus-ring-width) solid var(--color-border);
   outline-offset: var(--focus-ring-offset);
 }
 

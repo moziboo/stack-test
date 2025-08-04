@@ -31,11 +31,17 @@ describe('UBInput', () => {
     expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
   });
 
-  it('renders disabled state correctly', () => {
+  it('respects disabled state', async () => {
+    const user = userEvent.setup();
+    const handleChange = vi.fn();
+
     render(<UBInput label="Username" disabled />);
 
     const input = screen.getByRole('textbox');
     expect(input).toBeDisabled();
+
+    await user.click(input);
+    expect(handleChange).not.toHaveBeenCalled();
   });
 
   it('renders required attribute correctly', () => {

@@ -122,6 +122,7 @@ export const WithValidation: Story = {
 
 export const WithoutLabelForRadixForm: Story = {
   args: {
+    label: undefined,
     placeholder: 'This input has no label wrapper',
     type: 'email',
   },
