@@ -9,7 +9,7 @@
   --color-border: #000000;
   --color-text-primary: #000000;
   --color-text-secondary: #666666;
-  --color-disabled: #cccccc;
+  --color-disabled: #eeeeee;
   --color-disabled-text: #999999;
 
   /* Spacing */
@@ -20,8 +20,8 @@
   --spacing-xl: 32px;
 
   /* Typography */
-  --font-size-sm: 13px;
-  --font-size-md: 15px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
   --font-size-lg: 18px;
   --font-size-xl: 23px;
   --line-height-base: 1;
@@ -38,7 +38,7 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
   /* Form Elements */
-  --form-element-size: 25px;
+  --form-element-size: 35px;
   --form-element-border-width: 2px;
 
   /* Focus States */

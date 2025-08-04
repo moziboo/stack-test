@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import { useAppContext } from './hooks/useAppContext';
 import UBCheckbox from './components/UBCheckbox';
 import UBRadioGroup from './components/UBRadioGroup';
+import UBInput from './components/UBInput';
 import { ApiDemo } from './components/ApiDemo';
 import { useState } from 'react';
 
@@ -11,6 +12,7 @@ function AppContent() {
   const { theme, toggleTheme } = useAppContext();
   const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState('first');
+  const [inputValue, setInputValue] = useState('');
 
   return (
     <div className={`app ${theme}`}>
@@ -31,6 +33,12 @@ function AppContent() {
             { value: 'first', label: 'First' },
             { value: 'second', label: 'Second' },
           ]}
+        />
+        <UBInput
+          label="Username"
+          placeholder="Enter your username"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
         />
         <Home />
         <ApiDemo />

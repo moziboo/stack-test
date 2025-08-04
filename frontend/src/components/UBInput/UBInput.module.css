@@ -1,0 +1,65 @@
+/* Input Wrapper */
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Label Styles */
+.label {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.label.disabled {
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Input Styles */
+.input {
+  width: 100%;
+  min-width: 300px;
+  height: var(--form-element-size);
+  padding: 0 var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  border: var(--form-element-border-width) solid var(--color-border);
+  border-radius: 0;
+  cursor: text;
+}
+
+/* Input States */
+.input:hover:not(:disabled):not(:read-only) {
+  box-shadow: var(--shadow-sm);
+}
+
+.input:focus {
+  outline: var(--focus-ring-width) solid var(--color-border);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.input:disabled {
+  background-color: var(--color-disabled);
+  border-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+.input:read-only {
+  background-color: var(--color-background-secondary);
+  cursor: default;
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.input:disabled::placeholder {
+  color: var(--color-disabled-text);
+}
