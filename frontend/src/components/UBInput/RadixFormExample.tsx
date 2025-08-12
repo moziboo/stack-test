@@ -1,6 +1,7 @@
 // Example of how to use UBInput with Radix Form
 import { Form } from 'radix-ui';
 import UBInput from './UBInput';
+import UBButton from '../UBButton';
 
 // Usage with Radix Form - no label conflicts!
 export const RadixFormExample = () => (
@@ -23,7 +24,9 @@ export const RadixFormExample = () => (
     </Form.Field>
 
     <Form.Submit asChild>
-      <button type="submit">Sign In</button>
+      <UBButton type="submit" onFocus={() => console.log('Button focused!')}>
+        Sign In
+      </UBButton>
     </Form.Submit>
   </Form.Root>
 );

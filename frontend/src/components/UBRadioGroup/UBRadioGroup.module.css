@@ -20,8 +20,8 @@ button {
 }
 
 .radioGroupItem {
-  width: var(--form-element-size);
-  height: var(--form-element-size);
+  width: var(--form-element-size-md);
+  height: var(--form-element-size-md);
   border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
   border: var(--form-element-border-width) solid var(--color-border);
   color: var(--color-primary-contrast);

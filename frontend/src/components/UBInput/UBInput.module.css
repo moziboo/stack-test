@@ -23,7 +23,7 @@
 .input {
   width: 100%;
   min-width: 300px;
-  height: var(--form-element-size);
+  height: var(--form-element-size-lg);
   padding: 0 var(--spacing-sm);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
@@ -40,7 +40,7 @@
 }
 
 .input:focus {
-  outline: var(--focus-ring-width) solid var(--color-border);
+  outline: var(--form-element-border-width) solid var(--color-border);
   outline-offset: var(--focus-ring-offset);
 }
 

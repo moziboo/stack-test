@@ -13,7 +13,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,md}\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "create-component": "node scripts/create-component.js"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.2.1",

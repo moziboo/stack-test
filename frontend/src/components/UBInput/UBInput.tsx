@@ -8,62 +8,25 @@ interface UBInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const UBInput = forwardRef<HTMLInputElement, UBInputProps>(
-  (
-    {
-      label,
-      id,
-      type = 'text',
-      placeholder,
-      disabled = false,
-      required = false,
-      value,
-      defaultValue,
-      onChange,
-      onBlur,
-      onFocus,
-      autoComplete,
-      maxLength,
-      minLength,
-      pattern,
-      readOnly = false,
-      name,
-      className,
-      ...restProps
-    },
-    ref
-  ) => {
+  ({ label, id, type = 'text', className, disabled, readOnly, ...restProps }, ref) => {
     const generatedId = useId();
     const inputId = id || generatedId;
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange?.(event);
-    };
+    const inputElement = (
+      <input
+        ref={ref}
+        disabled={disabled}
+        readOnly={readOnly}
+        {...restProps}
+        id={inputId}
+        type={type}
+        className={`${styles.input} ${disabled ? styles.disabled : ''} ${readOnly ? styles.readOnly : ''} ${className || ''}`}
+      />
+    );
 
     // If no label is provided, just render the input (for use with Radix Form)
     if (!label) {
-      return (
-        <input
-          ref={ref}
-          id={inputId}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          disabled={disabled}
-          required={required}
-          value={value}
-          defaultValue={defaultValue}
-          onChange={handleChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          autoComplete={autoComplete}
-          maxLength={maxLength}
-          minLength={minLength}
-          pattern={pattern}
-          readOnly={readOnly}
-          className={`${styles.input} ${disabled ? styles.disabled : ''} ${readOnly ? styles.readOnly : ''} ${className || ''}`}
-          {...restProps}
-        />
-      );
+      return inputElement;
     }
 
     // If label is provided, render with our wrapper and label
@@ -75,27 +38,7 @@ const UBInput = forwardRef<HTMLInputElement, UBInputProps>(
         >
           {label}
         </Label.Root>
-        <input
-          ref={ref}
-          id={inputId}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          disabled={disabled}
-          required={required}
-          value={value}
-          defaultValue={defaultValue}
-          onChange={handleChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          autoComplete={autoComplete}
-          maxLength={maxLength}
-          minLength={minLength}
-          pattern={pattern}
-          readOnly={readOnly}
-          className={`${styles.input} ${disabled ? styles.disabled : ''} ${readOnly ? styles.readOnly : ''} ${className || ''}`}
-          {...restProps}
-        />
+        {inputElement}
       </div>
     );
   }

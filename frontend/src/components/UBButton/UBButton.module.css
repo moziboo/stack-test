@@ -1,0 +1,29 @@
+/* Add your styles here */
+.button {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  border: var(--form-element-border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0 var(--spacing-lg);
+  cursor: pointer;
+  height: var(--form-element-size-lg);
+  font-size: var(--font-size-md);
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.button:active {
+  background-color: var(--color-background-clicked);
+  color: var(--color-text-clicked);
+}
+
+.button:focus {
+  outline: 2px solid var(--color-primary, #0066cc);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.disabled,
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

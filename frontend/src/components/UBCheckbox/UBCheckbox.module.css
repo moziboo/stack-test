@@ -5,8 +5,8 @@ button {
 
 .checkboxRoot {
   background-color: var(--color-background);
-  width: var(--form-element-size);
-  height: var(--form-element-size);
+  width: var(--form-element-size-md);
+  height: var(--form-element-size-md);
   border-radius: var(--radius-md);
   border: var(--form-element-border-width) solid var(--color-border);
   display: flex;
