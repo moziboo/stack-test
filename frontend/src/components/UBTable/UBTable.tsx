@@ -92,13 +92,13 @@ const UBTableRow = forwardRef<HTMLTableRowElement, UBTableRowProps>(
 );
 
 // Header Cell Component
-interface UBTableHeaderCellProps extends React.ThHTMLAttributes<HTMLTableHeaderCellElement> {
+interface UBTableHeaderCellProps extends React.ThHTMLAttributes<HTMLTableCellElement> {
   sortable?: boolean;
   sortDirection?: 'asc' | 'desc' | 'none';
   onSort?: () => void;
 }
 
-const UBTableHeaderCell = forwardRef<HTMLTableHeaderCellElement, UBTableHeaderCellProps>(
+const UBTableHeaderCell = forwardRef<HTMLTableCellElement, UBTableHeaderCellProps>(
   (
     { sortable = false, sortDirection = 'none', onSort, className, children, ...restProps },
     ref
@@ -135,11 +135,11 @@ const UBTableHeaderCell = forwardRef<HTMLTableHeaderCellElement, UBTableHeaderCe
 );
 
 // Cell Component
-interface UBTableCellProps extends React.TdHTMLAttributes<HTMLTableDataCellElement> {
+interface UBTableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
   numeric?: boolean;
 }
 
-const UBTableCell = forwardRef<HTMLTableDataCellElement, UBTableCellProps>(
+const UBTableCell = forwardRef<HTMLTableCellElement, UBTableCellProps>(
   ({ numeric = false, className, children, ...restProps }, ref) => {
     const { size } = useContext(TableContext);
 

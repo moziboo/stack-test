@@ -1,0 +1,29 @@
+/* Form Container */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Field Wrapper */
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* Error Text */
+.errorText {
+  font-size: var(--font-size-xs);
+  color: var(--color-error, #dc3545);
+  margin-top: var(--spacing-xs);
+}
+
+/* Submit Button Wrapper */
+.submitWrapper {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: flex-start;
+}

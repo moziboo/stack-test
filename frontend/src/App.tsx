@@ -6,6 +6,7 @@ import UBCheckbox from './components/UBCheckbox';
 import UBRadioGroup from './components/UBRadioGroup';
 import UBInput from './components/UBInput';
 import { ApiDemo } from './components/ApiDemo';
+import FormDemo from './sampleForm';
 import { useState } from 'react';
 
 function AppContent() {
@@ -42,6 +43,7 @@ function AppContent() {
         />
         <Home />
         <ApiDemo />
+        <FormDemo />
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import UBTable from './UBTable';
-import type { ComponentProps } from 'react';
+import { type ComponentProps, useState, useMemo } from 'react';
 import { fn } from 'storybook/test';
 
 type UBTableProps = ComponentProps<typeof UBTable>;
@@ -137,6 +137,84 @@ export const WithSorting: Story = {
       </UBTable.Body>
     </UBTable>
   ),
+};
+
+export const InteractiveSortable: Story = {
+  render: args => {
+    // Define types based on our sampleData to ensure type safety.
+    type SortKey = keyof (typeof sampleData)[0];
+    type SortDirection = 'asc' | 'desc';
+
+    // State to manage the current sort column and direction.
+    const [sortConfig, setSortConfig] = useState<{
+      key: SortKey;
+      direction: SortDirection;
+    }>({ key: 'name', direction: 'asc' });
+
+    // useMemo will re-sort the data only when the data or sortConfig changes.
+    const sortedData = useMemo(() => {
+      const sortableItems = [...sampleData]; // Create a mutable copy
+      sortableItems.sort((a, b) => {
+        // Type guard to ensure we're comparing valid keys
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'asc' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+      return sortableItems;
+    }, [sortConfig]);
+
+    // This handler is called by UBTable.HeaderCell's onSort prop.
+    const handleSort = (key: SortKey) => {
+      let direction: SortDirection = 'asc';
+      // If clicking the same column, toggle direction. Otherwise, default to ascending.
+      if (sortConfig.key === key && sortConfig.direction === 'asc') {
+        direction = 'desc';
+      }
+      setSortConfig({ key, direction });
+    };
+
+    const headers: { key: SortKey; label: string }[] = [
+      { key: 'name', label: 'Name' },
+      { key: 'email', label: 'Email' },
+      { key: 'role', label: 'Role' },
+      { key: 'status', label: 'Status' },
+    ];
+
+    return (
+      <UBTable {...args}>
+        <UBTable.Header>
+          <UBTable.Row>
+            {headers.map(({ key, label }) => (
+              <UBTable.HeaderCell
+                key={key}
+                sortable
+                onSort={() => handleSort(key)}
+                // Pass the correct direction to the component
+                sortDirection={sortConfig.key === key ? sortConfig.direction : 'none'}
+              >
+                {label}
+              </UBTable.HeaderCell>
+            ))}
+          </UBTable.Row>
+        </UBTable.Header>
+        <UBTable.Body>
+          {/* We map over the state-managed, sorted data */}
+          {sortedData.map(user => (
+            <UBTable.Row key={user.id}>
+              <UBTable.Cell>{user.name}</UBTable.Cell>
+              <UBTable.Cell>{user.email}</UBTable.Cell>
+              <UBTable.Cell>{user.role}</UBTable.Cell>
+              <UBTable.Cell>{user.status}</UBTable.Cell>
+            </UBTable.Row>
+          ))}
+        </UBTable.Body>
+      </UBTable>
+    );
+  },
 };
 
 export const WithNumericData: Story = {

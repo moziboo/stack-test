@@ -1,0 +1,66 @@
+/* Select Wrapper */
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Label Styles */
+.label {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.label.disabled {
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Select Styles */
+.select {
+  width: 100%;
+  min-width: 300px;
+  height: var(--form-element-size-lg);
+  padding: 0 var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  border: var(--form-element-border-width) solid var(--color-border);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* Select States */
+.select:hover:not(:disabled) {
+  box-shadow: var(--shadow-sm);
+}
+
+.select:focus {
+  outline: var(--form-element-border-width) solid var(--color-border);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.select:disabled {
+  background-color: var(--color-disabled);
+  border-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+.select.error {
+  border-color: var(--color-error, #dc3545);
+}
+
+.select.error:focus {
+  outline-color: var(--color-error, #dc3545);
+}
+
+.errorText {
+  font-size: var(--font-size-xs);
+  color: var(--color-error, #dc3545);
+  margin-top: 2px;
+}
