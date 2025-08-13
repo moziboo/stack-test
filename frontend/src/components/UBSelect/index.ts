@@ -1,2 +1,4 @@
-export { default } from './UBSelect';
-export type { SelectOption } from './UBSelect';
+import UBSelect from './UBSelect';
+
+export default UBSelect;
+export type { UBSelectProps, SelectOption } from './UBSelect';

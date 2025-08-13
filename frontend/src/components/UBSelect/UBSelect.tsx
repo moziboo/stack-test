@@ -1,55 +1,92 @@
 import { useId, forwardRef } from 'react';
-import { Label } from 'radix-ui';
+import { Select, Label } from 'radix-ui';
 import styles from './UBSelect.module.css';
 
-export interface SelectOption {
-  label: string;
+interface SelectOption {
   value: string;
+  label: string;
+  disabled?: boolean;
 }
 
-interface UBSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  label?: string;
+interface UBSelectProps {
   options: SelectOption[];
+  value?: string;
+  onValueChange?: (value: string) => void;
   placeholder?: string;
-  error?: string;
+  label?: string;
+  id?: string;
+  disabled?: boolean;
+  required?: boolean;
+  className?: string;
 }
 
-const UBSelect = forwardRef<HTMLSelectElement, UBSelectProps>(
+const UBSelect = forwardRef<React.ElementRef<typeof Select.Root>, UBSelectProps>(
   (
-    { label, options, placeholder = 'Select...', error, id, className, disabled, ...restProps },
+    {
+      options,
+      value,
+      onValueChange,
+      placeholder = 'Select an option...',
+      label,
+      id,
+      disabled = false,
+      required = false,
+      className,
+      ...restProps
+    },
     ref
   ) => {
     const generatedId = useId();
     const selectId = id || generatedId;
 
     const selectElement = (
-      <>
-        <select
+      <Select.Root
+        value={value}
+        onValueChange={onValueChange}
+        disabled={disabled}
+        required={required}
+        {...restProps}
+      >
+        <Select.Trigger
           ref={ref}
-          disabled={disabled}
-          {...restProps}
           id={selectId}
-          className={`${styles.select} ${disabled ? styles.disabled : ''} ${error ? styles.error : ''} ${className || ''}`}
+          className={`${styles.trigger} ${disabled ? styles.disabled : ''} ${className || ''}`}
+          aria-label={label}
         >
-          <option value="" disabled>
-            {placeholder}
-          </option>
-          {options.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        {error && <span className={styles.errorText}>{error}</span>}
-      </>
+          <Select.Value placeholder={placeholder} />
+          <Select.Icon className={styles.icon}>
+            <span>▼</span>
+          </Select.Icon>
+        </Select.Trigger>
+
+        <Select.Portal>
+          <Select.Content className={styles.content} position="popper" sideOffset={4}>
+            <Select.Viewport className={styles.viewport}>
+              {options.map(option => (
+                <Select.Item
+                  key={option.value}
+                  value={option.value}
+                  disabled={option.disabled}
+                  className={`${styles.item} ${option.disabled ? styles.itemDisabled : ''}`}
+                >
+                  <Select.ItemText>{option.label}</Select.ItemText>
+                  <Select.ItemIndicator className={styles.itemIndicator}>
+                    <span>✓</span>
+                  </Select.ItemIndicator>
+                </Select.Item>
+              ))}
+            </Select.Viewport>
+          </Select.Content>
+        </Select.Portal>
+      </Select.Root>
     );
 
-    // If no label is provided, just render the select (for use with forms)
+    // If no label is provided, just render the select (for use with Radix Form)
     if (!label) {
-      return <div className={styles.selectWrapper}>{selectElement}</div>;
+      return selectElement;
     }
 
-    // If label is provided, render with our wrapper and label
+    // If label is provided, render with wrapper and label
     return (
       <div className={styles.selectWrapper}>
         <Label.Root
@@ -57,6 +94,7 @@ const UBSelect = forwardRef<HTMLSelectElement, UBSelectProps>(
           htmlFor={selectId}
         >
           {label}
+          {required && <span className={styles.required}>*</span>}
         </Label.Root>
         {selectElement}
       </div>
@@ -67,3 +105,4 @@ const UBSelect = forwardRef<HTMLSelectElement, UBSelectProps>(
 UBSelect.displayName = 'UBSelect';
 
 export default UBSelect;
+export type { UBSelectProps, SelectOption };

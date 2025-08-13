@@ -1,144 +1,167 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
 import UBSelect from './UBSelect';
-import type { SelectOption } from './UBSelect';
+import type { ComponentProps } from 'react';
+import { fn } from 'storybook/test';
+import { useState } from 'react';
 
-const meta: Meta<typeof UBSelect> = {
-  title: 'Components/UBSelect',
+type UBSelectProps = ComponentProps<typeof UBSelect>;
+
+const sampleOptions = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'cherry', label: 'Cherry' },
+  { value: 'date', label: 'Date' },
+  { value: 'elderberry', label: 'Elderberry', disabled: true },
+  { value: 'fig', label: 'Fig' },
+];
+
+const countryOptions = [
+  { value: 'us', label: 'United States' },
+  { value: 'ca', label: 'Canada' },
+  { value: 'uk', label: 'United Kingdom' },
+  { value: 'de', label: 'Germany' },
+  { value: 'fr', label: 'France' },
+  { value: 'jp', label: 'Japan' },
+  { value: 'au', label: 'Australia' },
+];
+
+const meta: Meta<UBSelectProps> = {
+  title: 'UtilityBelt/UBSelect',
   component: UBSelect,
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: 'A styled select dropdown component that integrates with the UB design system.',
-      },
-    },
-  },
-  tags: ['autodocs'],
   argTypes: {
-    disabled: {
-      control: 'boolean',
-    },
-    error: {
-      control: 'text',
-    },
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
+    disabled: { control: 'boolean' },
+    required: { control: 'boolean' },
+    onValueChange: { action: 'valueChanged' },
+  },
+  args: {
+    options: sampleOptions,
+    label: 'Choose a fruit',
+    placeholder: 'Select a fruit...',
+    disabled: false,
+    required: false,
+    onValueChange: fn(),
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof UBSelect>;
 
-const countryOptions: SelectOption[] = [
-  { label: 'United States', value: 'us' },
-  { label: 'Canada', value: 'ca' },
-  { label: 'United Kingdom', value: 'uk' },
-  { label: 'Germany', value: 'de' },
-  { label: 'France', value: 'fr' },
-  { label: 'Japan', value: 'jp' },
-  { label: 'Australia', value: 'au' },
-];
+type Story = StoryObj<UBSelectProps>;
 
-const priorityOptions: SelectOption[] = [
-  { label: 'Low', value: 'low' },
-  { label: 'Medium', value: 'medium' },
-  { label: 'High', value: 'high' },
-  { label: 'Urgent', value: 'urgent' },
-];
-
-// Default select
 export const Default: Story = {
-  args: {
-    label: 'Country',
-    options: countryOptions,
-    placeholder: 'Select a country',
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },
 };
 
-// Without label
 export const WithoutLabel: Story = {
   args: {
-    options: countryOptions,
-    placeholder: 'Choose an option',
+    label: undefined,
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },
 };
 
-// With error state
-export const WithError: Story = {
+export const WithPreselectedValue: Story = {
+  render: args => {
+    const [value, setValue] = useState<string>('banana');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
+  },
+};
+
+export const Required: Story = {
   args: {
-    label: 'Priority',
-    options: priorityOptions,
-    placeholder: 'Select priority',
-    error: 'This field is required',
+    required: true,
+    label: 'Required Selection',
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },
 };
 
-// Disabled state
 export const Disabled: Story = {
   args: {
-    label: 'Country',
-    options: countryOptions,
-    placeholder: 'Select a country',
     disabled: true,
   },
-};
+  render: args => {
+    const [value, setValue] = useState<string>('apple');
 
-// Interactive example with state
-export const Interactive: Story = {
-  render: () => {
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedPriority, setSelectedPriority] = useState('');
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24, minWidth: 300 }}>
-        <UBSelect
-          label="Country"
-          options={countryOptions}
-          placeholder="Select your country"
-          value={selectedCountry}
-          onChange={e => setSelectedCountry(e.target.value)}
-        />
-
-        <UBSelect
-          label="Priority Level"
-          options={priorityOptions}
-          placeholder="Select priority"
-          value={selectedPriority}
-          onChange={e => setSelectedPriority(e.target.value)}
-        />
-
-        {(selectedCountry || selectedPriority) && (
-          <div style={{ padding: 16, backgroundColor: '#f8f9fa', borderRadius: 4 }}>
-            <h4>Selected Values:</h4>
-            {selectedCountry && (
-              <p>Country: {countryOptions.find(c => c.value === selectedCountry)?.label}</p>
-            )}
-            {selectedPriority && (
-              <p>Priority: {priorityOptions.find(p => p.value === selectedPriority)?.label}</p>
-            )}
-          </div>
-        )}
-      </div>
-    );
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },
 };
 
-// Large options list
-export const ManyOptions: Story = {
+export const CountrySelector: Story = {
   args: {
-    label: 'State/Province',
+    options: countryOptions,
+    label: 'Country',
+    placeholder: 'Select your country...',
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
+  },
+};
+
+export const WithDisabledOptions: Story = {
+  args: {
     options: [
-      { label: 'Alabama', value: 'AL' },
-      { label: 'Alaska', value: 'AK' },
-      { label: 'Arizona', value: 'AZ' },
-      { label: 'Arkansas', value: 'AR' },
-      { label: 'California', value: 'CA' },
-      { label: 'Colorado', value: 'CO' },
-      { label: 'Connecticut', value: 'CT' },
-      { label: 'Delaware', value: 'DE' },
-      { label: 'Florida', value: 'FL' },
-      { label: 'Georgia', value: 'GA' },
-      // ... more states would go here
+      { value: 'option1', label: 'Available Option 1' },
+      { value: 'option2', label: 'Disabled Option', disabled: true },
+      { value: 'option3', label: 'Available Option 2' },
+      { value: 'option4', label: 'Another Disabled Option', disabled: true },
+      { value: 'option5', label: 'Available Option 3' },
     ],
-    placeholder: 'Select a state',
+    label: 'Select with disabled options',
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
+  },
+};
+
+export const LongOptionsList: Story = {
+  args: {
+    options: Array.from({ length: 20 }, (_, i) => ({
+      value: `option-${i + 1}`,
+      label: `Option ${i + 1}`,
+    })),
+    label: 'Select with many options',
+    placeholder: 'Choose from many options...',
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
+  },
+};
+
+export const WithoutLabelForRadixForm: Story = {
+  args: {
+    label: undefined,
+    placeholder: 'Used with Radix Form...',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This version renders just the select element, perfect for use with Radix Form.Control asChild.',
+      },
+    },
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('');
+
+    return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },
 };
