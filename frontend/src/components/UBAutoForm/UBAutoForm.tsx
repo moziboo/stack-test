@@ -134,8 +134,7 @@ export function UBAutoForm<TFormValues extends Record<string, unknown>>({
                           label={fieldConfig.label}
                           placeholder={fieldConfig.placeholder}
                           value={String(fieldApi.state.value || '')}
-                          onChange={e => fieldApi.handleChange(e.target.value)}
-                          onBlur={fieldApi.handleBlur}
+                          onValueChange={e => fieldApi.handleChange(e)}
                           options={fieldConfig.options}
                           disabled={disabled}
                         />
