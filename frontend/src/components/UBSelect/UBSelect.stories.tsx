@@ -26,7 +26,7 @@ const countryOptions = [
 ];
 
 const meta: Meta<UBSelectProps> = {
-  title: 'UtilityBelt/UBSelect',
+  title: 'UBSelect',
   component: UBSelect,
   argTypes: {
     label: { control: 'text' },

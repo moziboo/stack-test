@@ -17,7 +17,7 @@
     "create-component": "node scripts/create-component.js"
   },
   "dependencies": {
-    "@radix-ui/themes": "^3.2.1",
+    "@radix-ui/react-tabs": "^1.1.13",
     "@tanstack/react-form": "^1.19.1",
     "radix-ui": "^1.4.2",
     "react": "^18.2.0",

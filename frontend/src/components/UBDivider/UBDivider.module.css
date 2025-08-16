@@ -1,0 +1,225 @@
+/* Divider Container */
+.dividerContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.vertical {
+  flex-direction: column;
+  height: 100%;
+  width: auto;
+}
+
+/* Spacing Variants */
+.spacing-none {
+  margin: 0;
+}
+
+.spacing-sm {
+  margin: var(--spacing-sm) 0;
+}
+
+.spacing-md {
+  margin: var(--spacing-md) 0;
+}
+
+.spacing-lg {
+  margin: var(--spacing-lg) 0;
+}
+
+.spacing-xl {
+  margin: var(--spacing-xl) 0;
+}
+
+/* Vertical spacing */
+.vertical.spacing-none {
+  margin: 0;
+}
+
+.vertical.spacing-sm {
+  margin: 0 var(--spacing-sm);
+}
+
+.vertical.spacing-md {
+  margin: 0 var(--spacing-md);
+}
+
+.vertical.spacing-lg {
+  margin: 0 var(--spacing-lg);
+}
+
+.vertical.spacing-xl {
+  margin: 0 var(--spacing-xl);
+}
+
+/* Divider Line */
+.divider {
+  background-color: var(--color-border);
+  flex-shrink: 0;
+}
+
+.horizontal .divider {
+  height: 1px;
+  min-height: 1px;
+}
+
+.vertical .divider {
+  width: 1px;
+  min-width: 1px;
+  height: 100%;
+  min-height: 20px;
+}
+
+/* Full width/height for dividers without labels */
+.full {
+  flex: 1;
+}
+
+.horizontal .full {
+  width: 100%;
+}
+
+.vertical .full {
+  height: 100%;
+}
+
+/* Variant Styles */
+.solid {
+  border: none;
+}
+
+.dashed {
+  background: none;
+  border: none;
+}
+
+.horizontal .dashed {
+  border-top: 1px dashed var(--color-border);
+  height: 0;
+}
+
+.vertical .dashed {
+  border-left: 1px dashed var(--color-border);
+  width: 0;
+}
+
+.dotted {
+  background: none;
+  border: none;
+}
+
+.horizontal .dotted {
+  border-top: 1px dotted var(--color-border);
+  height: 0;
+}
+
+.vertical .dotted {
+  border-left: 1px dotted var(--color-border);
+  width: 0;
+}
+
+/* Label Styles */
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
+  padding: 0 var(--spacing-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.label-left {
+  order: -1;
+  padding-left: 0;
+}
+
+.label-center {
+  /* Default order */
+}
+
+.label-right {
+  order: 1;
+  padding-right: 0;
+}
+
+/* Adjust divider flex when label is present */
+.dividerContainer:has(.label) .divider:first-child {
+  flex: 1;
+  min-width: 20px;
+}
+
+.dividerContainer:has(.label) .divider:last-child {
+  flex: 1;
+  min-width: 20px;
+}
+
+/* Label positioning adjustments */
+.dividerContainer:has(.label-left) .divider:first-child {
+  display: none;
+}
+
+.dividerContainer:has(.label-right) .divider:last-child {
+  display: none;
+}
+
+/* Alternative approach for browsers that don't support :has() */
+@supports not selector(:has(*)) {
+  .dividerContainer .label ~ .divider {
+    flex: 1;
+    min-width: 20px;
+  }
+}
+
+/* Focus styles for when divider is focusable */
+.dividerContainer:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+
+/* Ensure proper contrast in dark mode */
+[data-theme='dark'] .divider {
+  background-color: var(--color-border);
+}
+
+[data-theme='dark'] .dashed {
+  border-color: var(--color-border);
+}
+
+[data-theme='dark'] .dotted {
+  border-color: var(--color-border);
+}
+
+[data-theme='dark'] .label {
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .label {
+    font-size: 12px;
+    padding: 0 var(--spacing-xs);
+  }
+
+  .spacing-lg {
+    margin: var(--spacing-md) 0;
+  }
+
+  .spacing-xl {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .vertical.spacing-lg {
+    margin: 0 var(--spacing-md);
+  }
+
+  .vertical.spacing-xl {
+    margin: 0 var(--spacing-lg);
+  }
+}

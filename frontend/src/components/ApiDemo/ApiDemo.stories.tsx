@@ -4,7 +4,7 @@ import { ApiDemo } from './ApiDemo';
 import type { User, Post, ApiResponse } from '../../types';
 
 const meta: Meta<typeof ApiDemo> = {
-  title: 'Components/ApiDemo',
+  title: 'Test/ApiDemo',
   component: ApiDemo,
   parameters: {
     layout: 'fullscreen',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import UBButton from './UBButton';
 
 const meta: Meta<typeof UBButton> = {
-  title: 'UtilityBelt/UBButton',
+  title: 'UBButton',
   component: UBButton,
 };
 

@@ -1,0 +1,156 @@
+/* Spinner Container */
+.spinnerContainer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Spinner Base */
+.spinner {
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Spinner Inner Ring */
+.spinnerInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  animation: spin var(--spin-duration, 1s) linear infinite;
+}
+
+/* Size Variants */
+.sm {
+  width: 16px;
+  height: 16px;
+}
+
+.md {
+  width: 24px;
+  height: 24px;
+}
+
+.lg {
+  width: 32px;
+  height: 32px;
+}
+
+.xl {
+  width: 48px;
+  height: 48px;
+}
+
+.xl .spinnerInner {
+  border-width: 3px;
+}
+
+/* Color Variants */
+.default {
+  color: var(--color-text-secondary);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.secondary {
+  color: var(--color-text-secondary);
+}
+
+/* Speed Variants */
+.slow {
+  --spin-duration: 2s;
+}
+
+.normal {
+  --spin-duration: 1s;
+}
+
+.fast {
+  --spin-duration: 0.5s;
+}
+
+/* Label Styles */
+.label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  text-align: center;
+  margin-top: var(--spacing-xs);
+}
+
+.smLabel {
+  font-size: 12px;
+}
+
+.mdLabel {
+  font-size: var(--font-size-sm);
+}
+
+.lgLabel {
+  font-size: var(--font-size-md);
+}
+
+.xlLabel {
+  font-size: var(--font-size-lg);
+}
+
+/* Screen Reader Only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .spinner .spinnerInner {
+    animation: none;
+  }
+
+  /* Fallback pulsing animation for reduced motion */
+  .spinner {
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Focus styles for when spinner is focusable */
+.spinnerContainer:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}

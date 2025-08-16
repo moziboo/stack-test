@@ -1,0 +1,137 @@
+/* Card Base Styles */
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+  transition: var(--transition-normal);
+  overflow: hidden;
+}
+
+/* Card Variants */
+.default {
+  border: var(--form-element-border-width) solid var(--color-border);
+}
+
+.outlined {
+  border: var(--form-element-border-width) solid var(--color-border);
+  background-color: transparent;
+}
+
+.elevated {
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.elevated:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Padding Variants */
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: var(--spacing-sm);
+}
+
+.padding-md {
+  padding: var(--spacing-md);
+}
+
+.padding-lg {
+  padding: var(--spacing-lg);
+}
+
+/* Header Styles */
+.header {
+  padding: var(--spacing-md);
+  margin: calc(var(--spacing-md) * -1);
+  margin-bottom: 0;
+}
+
+.headerDivider {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+}
+
+/* Body Styles */
+.body {
+  flex: 1;
+  min-height: 0; /* Allow flex shrinking */
+}
+
+/* Footer Styles */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  margin: calc(var(--spacing-md) * -1);
+  margin-top: 0;
+}
+
+.footerDivider {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+}
+
+/* Footer Justification */
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Card within padding contexts */
+.card .header,
+.card .footer {
+  padding: var(--spacing-md);
+}
+
+.padding-sm .header,
+.padding-sm .footer {
+  padding: var(--spacing-sm);
+  margin: calc(var(--spacing-sm) * -1);
+}
+
+.padding-sm .header {
+  margin-bottom: 0;
+}
+
+.padding-sm .footer {
+  margin-top: 0;
+}
+
+.padding-lg .header,
+.padding-lg .footer {
+  padding: var(--spacing-lg);
+  margin: calc(var(--spacing-lg) * -1);
+}
+
+.padding-lg .header {
+  margin-bottom: 0;
+}
+
+.padding-lg .footer {
+  margin-top: 0;
+}
+
+.padding-none .header,
+.padding-none .footer {
+  padding: var(--spacing-md);
+  margin: 0;
+}

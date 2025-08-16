@@ -30,9 +30,9 @@
   --line-height-relaxed: 1.5;
 
   /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 7px;
-  --radius-lg: 12px;
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -43,7 +43,7 @@
   --form-element-size-lg: 35px;
   --form-element-size-md: 27px;
   --form-element-size-sm: 23px;
-  --form-element-border-width: 1.5px;
+  --form-element-border-width: 2px;
 
   /* Focus States */
   --focus-ring-width: 2px;

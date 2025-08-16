@@ -4,7 +4,7 @@ import UBButton from '../UBButton';
 import { useState } from 'react';
 
 const meta: Meta = {
-  title: 'UtilityBelt/UBModal',
+  title: 'UBModal',
   component: UBModal,
   argTypes: {
     open: { control: 'boolean' },
