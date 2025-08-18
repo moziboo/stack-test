@@ -5,7 +5,7 @@ import { useAppContext } from './hooks/useAppContext';
 import UBCheckbox from './components/UBCheckbox';
 import UBRadioGroup from './components/UBRadioGroup';
 import UBInput from './components/UBInput';
-import { ApiDemo } from './components/ApiDemo';
+
 import FormDemo from './sampleForm';
 import { useState } from 'react';
 
@@ -42,7 +42,6 @@ function AppContent() {
           onChange={e => setInputValue(e.target.value)}
         />
         <Home />
-        <ApiDemo />
         <FormDemo />
       </main>
     </div>

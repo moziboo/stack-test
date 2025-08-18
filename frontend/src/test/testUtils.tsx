@@ -18,12 +18,3 @@ export const createMockUser = (overrides = {}) => ({
   email: 'test@example.com',
   ...overrides,
 });
-
-export const createMockPost = (overrides = {}) => ({
-  id: 'post-1',
-  title: 'Test Post',
-  content: 'This is a test post content',
-  createdAt: '2023-01-01T00:00:00Z',
-  author: createMockUser(),
-  ...overrides,
-});

@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
-import type { User, Post, ApiResponse } from '../../types';
-import { createMockUser, createMockPost } from '../testUtils';
+import type { User, ApiResponse } from '../../types';
+import { createMockUser } from '../testUtils';
 
 // Mock data - you can expand this as needed
 const mockUsers: User[] = [
@@ -19,27 +19,6 @@ const mockUsers: User[] = [
     name: 'Test User With No Avatar',
     email: 'no-avatar@example.com',
     avatar: undefined,
-  }),
-];
-
-const mockPosts: Post[] = [
-  createMockPost({
-    id: 'post-1',
-    title: 'Getting Started with React',
-    content: 'React is a powerful library for building user interfaces...',
-    author: mockUsers[0],
-  }),
-  createMockPost({
-    id: 'post-2',
-    title: 'Understanding TypeScript',
-    content: 'TypeScript adds static typing to JavaScript...',
-    author: mockUsers[1],
-  }),
-  createMockPost({
-    id: 'post-3',
-    title: 'Testing with Vitest',
-    content: 'Vitest is a fast unit testing framework...',
-    author: mockUsers[2],
   }),
 ];
 
@@ -73,57 +52,6 @@ export const handlers = [
       message: 'User retrieved successfully',
     };
     return HttpResponse.json(response);
-  }),
-
-  // Get all posts
-  http.get('https://api.example.com/posts', () => {
-    const response: ApiResponse<Post[]> = {
-      data: mockPosts,
-      status: 200,
-      message: 'Posts retrieved successfully',
-    };
-    return HttpResponse.json(response);
-  }),
-
-  // Get post by ID
-  http.get('https://api.example.com/posts/:id', ({ params }) => {
-    const { id } = params;
-    const post = mockPosts.find(p => p.id === id);
-
-    if (!post) {
-      return HttpResponse.json(
-        { data: null, status: 404, message: 'Post not found' },
-        { status: 404 }
-      );
-    }
-
-    const response: ApiResponse<Post> = {
-      data: post,
-      status: 200,
-      message: 'Post retrieved successfully',
-    };
-    return HttpResponse.json(response);
-  }),
-
-  // Create a new post
-  http.post('https://api.example.com/posts', async ({ request }) => {
-    const body = (await request.json()) as Partial<Post>;
-
-    const newPost = createMockPost({
-      id: `post-${Date.now()}`,
-      title: body.title || 'Untitled',
-      content: body.content || '',
-      author: mockUsers[0], // Default to first user
-    });
-
-    mockPosts.push(newPost);
-
-    const response: ApiResponse<Post> = {
-      data: newPost,
-      status: 201,
-      message: 'Post created successfully',
-    };
-    return HttpResponse.json(response, { status: 201 });
   }),
 
   // Simulate an error endpoint for testing error handling

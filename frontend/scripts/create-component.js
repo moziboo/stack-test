@@ -54,10 +54,10 @@ fs.mkdirSync(targetDir, { recursive: true });
 
 // File mappings: template filename -> target filename
 const fileMapping = {
-  'UBComponent.tsx': `${componentName}.tsx`,
+  'UBComponent.tesx': `${componentName}.tsx`,
   'UBComponent.module.css': `${componentName}.module.css`,
-  'UBComponent.stories.tsx': `${componentName}.stories.tsx`,
-  'UBComponent.test.tsx': `${componentName}.test.tsx`,
+  'UBComponent.stories.tesx': `${componentName}.stories.tsx`,
+  'UBComponent.test.tesx': `${componentName}.test.tsx`,
   'index.ts': 'index.ts',
 };
 

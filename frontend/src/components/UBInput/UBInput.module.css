@@ -23,9 +23,9 @@
 .input {
   width: 100%;
   min-width: 300px;
-  height: var(--form-element-size-lg);
+  height: var(--form-element-size-xl);
   padding: 0 var(--spacing-sm);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
   background-color: var(--color-background);
