@@ -1,59 +1,43 @@
-import styles from './App.module.css';
-import { AppProvider } from './context/AppContext';
-import Home from './pages/Home';
-import { useAppContext } from './hooks/useAppContext';
-import UBCheckbox from './components/UBCheckbox';
-import UBRadioGroup from './components/UBRadioGroup';
-import UBInput from './components/UBInput';
-
-import FormDemo from './sampleForm';
-import { useState } from 'react';
+import UBTable from './components/UBTable';
+import type { User } from './api/apiClient';
+import { useQuery } from '@tanstack/react-query';
 
 function AppContent() {
-  const { theme, toggleTheme } = useAppContext();
-  const [checked, setChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState('first');
-  const [inputValue, setInputValue] = useState('');
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['users'],
+    queryFn: () => fetch('https://api.example.com/users').then(res => res.json()),
+  });
 
   return (
-    <div className={`app ${theme}`}>
-      <header className={styles.header}>
-        <button onClick={toggleTheme}>Switch to {theme === 'light' ? 'dark' : 'light'} mode</button>
-      </header>
-
-      <main>
-        <UBCheckbox
-          checked={checked}
-          onCheckedChange={setChecked}
-          label="Accept terms and conditions"
-        />
-        <UBRadioGroup
-          value={radioValue}
-          onValueChange={setRadioValue}
-          options={[
-            { value: 'first', label: 'First' },
-            { value: 'second', label: 'Second' },
-          ]}
-        />
-        <UBInput
-          label="Username"
-          placeholder="Enter your username"
-          value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
-        />
-        <Home />
-        <FormDemo />
-      </main>
-    </div>
+    <main>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error: {error.message}</div>}
+      {data && (
+        <UBTable striped>
+          <UBTable.Header>
+            <UBTable.Row>
+              <UBTable.HeaderCell>ID</UBTable.HeaderCell>
+              <UBTable.HeaderCell>Name</UBTable.HeaderCell>
+              <UBTable.HeaderCell>Email</UBTable.HeaderCell>
+            </UBTable.Row>
+          </UBTable.Header>
+          <UBTable.Body>
+            {data.data.map((user: User) => (
+              <UBTable.Row key={user.id}>
+                <UBTable.Cell>{user.id}</UBTable.Cell>
+                <UBTable.Cell>{user.name}</UBTable.Cell>
+                <UBTable.Cell>{user.email}</UBTable.Cell>
+              </UBTable.Row>
+            ))}
+          </UBTable.Body>
+        </UBTable>
+      )}
+    </main>
   );
 }
 
 function App() {
-  return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
-  );
+  return <AppContent />;
 }
 
 export default App;

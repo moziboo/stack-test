@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
-import { UBAutoForm } from './components/UBAutoForm';
-import type { FieldsConfig } from './components/UBAutoForm';
+import { UBAutoForm } from '../components/UBAutoForm';
+import type { FieldsConfig } from '../components/UBAutoForm';
 
 // Original simple form for comparison
 function SimpleForm() {

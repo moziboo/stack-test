@@ -67,16 +67,4 @@ export const api = {
   // Users
   getUsers: () => apiClient<ApiResponse<User[]>>('/users'),
   getUser: (id: string) => apiClient<ApiResponse<User>>(`/users/${id}`),
-
-  // Test endpoints
-  getError: () => apiClient<ApiResponse<never>>('/error'),
-  getSlowResponse: () => apiClient<ApiResponse<string>>('/slow'),
-
-  // Additional endpoints
-  getUsersPaginated: (page: number = 1, limit: number = 10) =>
-    apiClient<PaginatedResponse<User>>(`/users/paginated?page=${page}&limit=${limit}`),
-  searchUsers: (query: string) =>
-    apiClient<ApiResponse<User[]>>(`/users/search?q=${encodeURIComponent(query)}`),
-  getEmptyUsers: () => apiClient<ApiResponse<User[]>>('/users/empty'),
-  getUnreliableResponse: () => apiClient<ApiResponse<string>>('/unreliable'),
 };

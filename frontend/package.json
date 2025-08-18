@@ -17,8 +17,8 @@
     "create-component": "node scripts/create-component.js"
   },
   "dependencies": {
-    "@radix-ui/react-tabs": "^1.1.13",
     "@tanstack/react-form": "^1.19.1",
+    "@tanstack/react-query": "^5.85.3",
     "radix-ui": "^1.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@eslint/js": "^9.30.1",
     "@storybook/react-vite": "^9.0.17",
+    "@tanstack/eslint-plugin-query": "^5.83.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.0",
     "@testing-library/user-event": "^14.5.2",
