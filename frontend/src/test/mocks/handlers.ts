@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
-import type { User, ApiResponse } from '../../types';
+import type { User } from '../../types';
 import { createMockUser } from '../testUtils';
 
 // Mock data - you can expand this as needed
@@ -26,11 +26,7 @@ const mockUsers: User[] = [
 export const handlers = [
   // Get all users
   http.get('https://api.example.com/users', async () => {
-    const response: ApiResponse<User[]> = {
-      data: mockUsers,
-      status: 200,
-      message: 'Users retrieved successfully',
-    };
+    const response: User[] = mockUsers;
 
     await delay(1000);
     return HttpResponse.json(response);
@@ -42,17 +38,9 @@ export const handlers = [
     const user = mockUsers.find(u => u.id === id);
 
     if (!user) {
-      return HttpResponse.json(
-        { data: null, status: 404, message: 'User not found' },
-        { status: 404 }
-      );
+      return HttpResponse.json({ message: 'User not found' }, { status: 404 });
     }
 
-    const response: ApiResponse<User> = {
-      data: user,
-      status: 200,
-      message: 'User retrieved successfully',
-    };
-    return HttpResponse.json(response);
+    return HttpResponse.json(user);
   }),
 ];

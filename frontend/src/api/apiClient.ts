@@ -1,12 +1,5 @@
-const API_BASE_URL = 'https://api.example.com';
+import axios, { type AxiosInstance } from 'axios';
 
-type RequestOptions = {
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  headers?: Record<string, string>;
-  body?: Record<string, unknown>;
-};
-
-// Basic types for API responses
 export type User = {
   id: string;
   name: string;
@@ -20,51 +13,17 @@ export type ApiResponse<T> = {
   message: string;
 };
 
-export type PaginatedResponse<T> = {
-  data: {
-    users: T[];
-    total: number;
-    page: number;
-  };
-  status: number;
-  message: string;
-};
+const apiClient: AxiosInstance = axios.create({
+  baseURL: 'https://api.example.com',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+});
 
-/**
- * Simple API client for making HTTP requests
- */
-export const apiClient = async <T>(endpoint: string, options: RequestOptions = {}): Promise<T> => {
-  const { method = 'GET', headers = {}, body } = options;
+apiClient.interceptors.response.use(
+  response => response,
+  error => Promise.reject(error)
+);
 
-  const config: RequestInit = {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      ...headers,
-    },
-  };
-
-  if (body) {
-    config.body = JSON.stringify(body);
-  }
-
-  try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status} ${response.statusText}`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error('API request failed:', error);
-    throw error;
-  }
-};
-
-// Simple API functions without validation
-export const api = {
-  // Users
-  getUsers: () => apiClient<ApiResponse<User[]>>('/users'),
-  getUser: (id: string) => apiClient<ApiResponse<User>>(`/users/${id}`),
-};
+export default apiClient;
