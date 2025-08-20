@@ -6,7 +6,7 @@ import { getUsers } from './api/users';
 function AppContent() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['users'],
-    queryFn: getUsers, // Now getUsers() directly returns User[]
+    queryFn: getUsers,
   });
 
   // Handle loading state
@@ -24,10 +24,6 @@ function AppContent() {
     return <div>No users found</div>;
   }
 
-  // Now you can safely access data without checking everywhere
-  const users = data;
-  console.log('Users loaded:', users);
-
   return (
     <main>
       <UBTable striped>
@@ -39,7 +35,7 @@ function AppContent() {
           </UBTable.Row>
         </UBTable.Header>
         <UBTable.Body>
-          {users.map((user: User) => (
+          {data.map((user: User) => (
             <UBTable.Row key={user.id}>
               <UBTable.Cell>{user.id}</UBTable.Cell>
               <UBTable.Cell>{user.name}</UBTable.Cell>

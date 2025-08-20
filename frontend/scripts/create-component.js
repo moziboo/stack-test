@@ -31,7 +31,7 @@ if (!/^UB[A-Z][a-zA-Z0-9]*$/.test(componentName)) {
 }
 
 const projectRoot = path.resolve(__dirname, '..');
-const templateDir = path.join(projectRoot, 'src', 'templates', 'UBComponent');
+const templateDir = path.join(projectRoot, 'src', 'components', 'templates', 'UBComponent');
 const componentsDir = path.join(projectRoot, 'src', 'components');
 const targetDir = path.join(componentsDir, componentName);
 
