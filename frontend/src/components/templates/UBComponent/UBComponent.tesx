@@ -18,3 +18,4 @@ const UBComponent = (
 };
 
 export default UBComponent;
+export type { UBComponentProps };
