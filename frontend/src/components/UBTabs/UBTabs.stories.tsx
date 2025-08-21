@@ -3,7 +3,7 @@ import { useState } from 'react';
 import UBTabs from './UBTabs';
 
 const meta: Meta<typeof UBTabs> = {
-  title: 'UBTabs',
+  title: 'ToReview/UBTabs',
   component: UBTabs,
   parameters: {
     layout: 'padded',

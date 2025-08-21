@@ -7,7 +7,7 @@ import { fn } from 'storybook/test';
 type UBCheckboxProps = ComponentProps<typeof UBCheckbox>;
 
 const meta: Meta<UBCheckboxProps> = {
-  title: 'UBCheckbox',
+  title: 'ToReview/UBCheckbox',
   component: UBCheckbox,
   argTypes: {
     checked: { control: 'boolean' },

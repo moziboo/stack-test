@@ -6,7 +6,7 @@ import { useState } from 'react';
 type UBRadioGroupProps = ComponentProps<typeof UBRadioGroup>;
 
 const meta: Meta<UBRadioGroupProps> = {
-  title: 'UBRadioGroup',
+  title: 'ToReview/UBRadioGroup',
   component: UBRadioGroup,
   argTypes: {
     value: { control: 'text' },

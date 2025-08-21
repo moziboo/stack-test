@@ -26,7 +26,7 @@ const countryOptions = [
 ];
 
 const meta: Meta<UBSelectProps> = {
-  title: 'UBSelect',
+  title: 'ToReview/UBSelect',
   component: UBSelect,
   argTypes: {
     label: { control: 'text' },

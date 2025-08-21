@@ -3,7 +3,7 @@ import UBDivider from './UBDivider';
 import UBCard from '../UBCard/UBCard';
 
 const meta: Meta<typeof UBDivider> = {
-  title: 'UBDivider',
+  title: 'ToReview/UBDivider',
   component: UBDivider,
   parameters: {
     layout: 'padded',

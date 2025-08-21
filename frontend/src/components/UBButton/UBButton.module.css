@@ -27,4 +27,6 @@
 .button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  color: var(--color-disabled-text);
+  border-color: var(--color-border-disabled);
 }

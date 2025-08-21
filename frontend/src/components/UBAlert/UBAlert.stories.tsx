@@ -7,7 +7,7 @@ import { useState } from 'react';
 type UBAlertProps = ComponentProps<typeof UBAlert>;
 
 const meta: Meta<UBAlertProps> = {
-  title: 'UBAlert',
+  title: 'ToReview/UBAlert',
   component: UBAlert,
   argTypes: {
     variant: { control: 'select', options: ['info', 'success', 'warning', 'error'] },

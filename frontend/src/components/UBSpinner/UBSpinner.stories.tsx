@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import UBSpinner from './UBSpinner';
 
 const meta: Meta<typeof UBSpinner> = {
-  title: 'UBSpinner',
+  title: 'ToReview/UBSpinner',
   component: UBSpinner,
   parameters: {
     layout: 'centered',

@@ -44,3 +44,4 @@ const UBCheckbox = forwardRef<React.ElementRef<typeof Checkbox.Root>, UBCheckbox
 UBCheckbox.displayName = 'UBCheckbox';
 
 export default UBCheckbox;
+export type { UBCheckboxProps };

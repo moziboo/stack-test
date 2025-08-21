@@ -73,3 +73,4 @@ const UBRadioGroup = forwardRef<React.ElementRef<typeof RadioGroup.Root>, UBRadi
 UBRadioGroup.displayName = 'UBRadioGroup';
 
 export default UBRadioGroup;
+export type { UBRadioGroupProps };

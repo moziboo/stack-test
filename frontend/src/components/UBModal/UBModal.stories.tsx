@@ -4,7 +4,7 @@ import UBButton from '../UBButton';
 import { useState } from 'react';
 
 const meta: Meta = {
-  title: 'UBModal',
+  title: 'ToReview/UBModal',
   component: UBModal,
   argTypes: {
     open: { control: 'boolean' },

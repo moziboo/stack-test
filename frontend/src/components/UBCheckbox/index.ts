@@ -1,3 +1,2 @@
-import UBCheckbox from './UBCheckbox.tsx';
-
-export default UBCheckbox;
+export { default } from './UBCheckbox';
+export type { UBCheckboxProps } from './UBCheckbox';

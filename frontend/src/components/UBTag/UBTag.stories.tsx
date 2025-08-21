@@ -4,7 +4,7 @@ import UBTag from './UBTag';
 import UBCard from '../UBCard/UBCard';
 
 const meta: Meta<typeof UBTag> = {
-  title: 'UBTag',
+  title: 'ToReview/UBTag',
   component: UBTag,
   parameters: {
     layout: 'padded',

@@ -1,3 +1,2 @@
-import UBInput from './UBInput.tsx';
-
-export default UBInput;
+export { default } from './UBInput';
+export type { UBInputProps } from './UBInput';

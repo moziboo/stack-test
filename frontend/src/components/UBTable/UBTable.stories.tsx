@@ -6,7 +6,7 @@ import { fn } from 'storybook/test';
 type UBTableProps = ComponentProps<typeof UBTable>;
 
 const meta: Meta<UBTableProps> = {
-  title: 'UBTable',
+  title: 'ToReview/UBTable',
   component: UBTable,
   argTypes: {
     striped: { control: 'boolean' },

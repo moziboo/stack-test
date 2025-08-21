@@ -3,7 +3,7 @@ import { UBAutoForm } from './UBAutoForm';
 import type { FieldsConfig } from './UBAutoForm';
 
 const meta: Meta<typeof UBAutoForm> = {
-  title: 'UBAutoForm',
+  title: 'ToReview/UBAutoForm',
   component: UBAutoForm,
   parameters: {
     layout: 'centered',

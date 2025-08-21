@@ -3,7 +3,7 @@ import UBCard from './UBCard';
 import UBButton from '../UBButton/UBButton';
 
 const meta: Meta<typeof UBCard> = {
-  title: 'UBCard',
+  title: 'ToReview/UBCard',
   component: UBCard,
   parameters: {
     layout: 'padded',

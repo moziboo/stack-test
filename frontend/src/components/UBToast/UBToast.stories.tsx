@@ -4,7 +4,7 @@ import UBToast from './UBToast';
 import UBButton from '../UBButton/UBButton';
 
 const meta: Meta<typeof UBToast> = {
-  title: 'UBToast',
+  title: 'ToReview/UBToast',
   component: UBToast,
   parameters: {
     layout: 'padded',

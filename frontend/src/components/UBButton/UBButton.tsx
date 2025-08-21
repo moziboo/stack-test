@@ -26,3 +26,4 @@ const UBButton = forwardRef<HTMLButtonElement, UBButtonProps>(
 UBButton.displayName = 'UBButton';
 
 export default UBButton;
+export type { UBButtonProps };

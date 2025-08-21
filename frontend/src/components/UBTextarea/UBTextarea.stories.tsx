@@ -7,7 +7,7 @@ import { useState } from 'react';
 type UBTextareaProps = ComponentProps<typeof UBTextarea>;
 
 const meta: Meta<UBTextareaProps> = {
-  title: 'UBTextarea',
+  title: 'ToReview/UBTextarea',
   component: UBTextarea,
   argTypes: {
     label: { control: 'text' },

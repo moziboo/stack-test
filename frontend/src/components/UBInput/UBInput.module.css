@@ -45,14 +45,12 @@
 }
 
 .input:disabled {
-  background-color: var(--color-disabled);
-  border-color: var(--color-disabled);
+  border-color: var(--color-border-disabled);
   color: var(--color-disabled-text);
   cursor: not-allowed;
 }
 
 .input:read-only {
-  background-color: var(--color-background-secondary);
   cursor: default;
 }
 

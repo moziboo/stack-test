@@ -47,3 +47,4 @@ const UBInput = forwardRef<HTMLInputElement, UBInputProps>(
 UBInput.displayName = 'UBInput';
 
 export default UBInput;
+export type { UBInputProps };

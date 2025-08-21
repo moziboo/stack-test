@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import UBComponent from './UBComponent';
 
 const meta: Meta<typeof UBComponent> = {
-  title: 'UBComponent',
+  title: 'ToReview/UBComponent',
   component: UBComponent,
 };
 

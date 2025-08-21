@@ -7,7 +7,7 @@ import { fn } from 'storybook/test';
 type UBInputProps = ComponentProps<typeof UBInput>;
 
 const meta: Meta<UBInputProps> = {
-  title: 'UBInput',
+  title: 'ToReview/UBInput',
   component: UBInput,
   argTypes: {
     label: { control: 'text' },
