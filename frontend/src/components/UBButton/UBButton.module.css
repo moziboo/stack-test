@@ -13,6 +13,19 @@
   font-style: italic;
 }
 
+/* Override cursor for all child elements without !important */
+.button *,
+.button *:hover,
+.button *:focus {
+  cursor: pointer;
+}
+
+/* Ensure disabled state cursor applies to children too */
+.button:disabled *,
+.button.disabled * {
+  cursor: not-allowed;
+}
+
 .button:active {
   background-color: var(--color-background-clicked);
   color: var(--color-text-clicked);

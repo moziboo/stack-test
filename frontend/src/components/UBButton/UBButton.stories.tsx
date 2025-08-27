@@ -4,7 +4,7 @@ import { Label } from 'radix-ui';
 import { fn } from 'storybook/test';
 
 const meta: Meta<typeof UBButton> = {
-  title: 'ToReview/UBButton',
+  title: 'UBButton',
   component: UBButton,
   args: {
     label: 'Submit',
