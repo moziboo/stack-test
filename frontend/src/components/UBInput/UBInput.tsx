@@ -8,7 +8,7 @@ interface UBInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const UBInput = forwardRef<HTMLInputElement, UBInputProps>(
-  ({ label, id, type = 'text', className, disabled, readOnly, ...restProps }, ref) => {
+  ({ label, id, type = 'text', className, disabled, readOnly, required, ...restProps }, ref) => {
     const generatedId = useId();
     const inputId = id || generatedId;
 
@@ -17,6 +17,7 @@ const UBInput = forwardRef<HTMLInputElement, UBInputProps>(
         ref={ref}
         disabled={disabled}
         readOnly={readOnly}
+        required={required}
         {...restProps}
         id={inputId}
         type={type}
@@ -36,7 +37,7 @@ const UBInput = forwardRef<HTMLInputElement, UBInputProps>(
           className={`${styles.label} ${disabled ? styles.disabled : ''}`}
           htmlFor={inputId}
         >
-          {label}
+          {`${label} ${required ? '*' : ''}`}
         </Label.Root>
         {inputElement}
       </div>

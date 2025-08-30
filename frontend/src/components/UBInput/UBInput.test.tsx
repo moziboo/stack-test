@@ -16,6 +16,9 @@ describe('UBInput', () => {
 
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Enter text')).toBeInTheDocument();
+
+    // Check that no label element exists
+    expect(screen.queryByRole('label')).not.toBeInTheDocument();
   });
 
   it('renders with correct input type', () => {
@@ -170,5 +173,25 @@ describe('UBInput', () => {
     const label = screen.getByText('Username');
 
     expect(label).toHaveAttribute('for', input.getAttribute('id'));
+  });
+
+  it('label displays required asterisk', () => {
+    render(<UBInput required label="Username" />);
+
+    const label = screen.getByText('Username *');
+
+    expect(label).toBeInTheDocument();
+  });
+
+  it('forwards ref correctly to input element', () => {
+    const ref = vi.fn();
+    render(<UBInput ref={ref} />);
+
+    // Verify ref was called with the actual input DOM element
+    expect(ref).toHaveBeenCalledWith(expect.any(HTMLInputElement));
+
+    // Get the input element and verify it's the same one the ref received
+    const input = screen.getByRole('textbox');
+    expect(ref).toHaveBeenCalledWith(input);
   });
 });
