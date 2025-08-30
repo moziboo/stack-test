@@ -183,23 +183,3 @@ export const WithCharacterCount: Story = {
     );
   },
 };
-
-export const WithoutLabelForRadixForm: Story = {
-  args: {
-    label: undefined,
-    placeholder: 'Used with Radix Form...',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'This version renders just the textarea element, perfect for use with Radix Form.Control asChild.',
-      },
-    },
-  },
-  render: args => {
-    const [value, setValue] = useState('');
-
-    return <UBTextarea {...args} value={value} onChange={e => setValue(e.target.value)} />;
-  },
-};

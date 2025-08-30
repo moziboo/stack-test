@@ -119,20 +119,3 @@ export const WithValidation: Story = {
   },
   render: args => <UBInput {...args} />,
 };
-
-export const WithoutLabelForRadixForm: Story = {
-  args: {
-    label: undefined,
-    placeholder: 'This input has no label wrapper',
-    type: 'email',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'This version renders just the input element, perfect for use with Radix Form.Control asChild.',
-      },
-    },
-  },
-  render: args => <UBInput {...args} />,
-};

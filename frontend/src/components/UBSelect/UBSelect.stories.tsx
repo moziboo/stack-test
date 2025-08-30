@@ -145,23 +145,3 @@ export const LongOptionsList: Story = {
     return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },
 };
-
-export const WithoutLabelForRadixForm: Story = {
-  args: {
-    label: undefined,
-    placeholder: 'Used with Radix Form...',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'This version renders just the select element, perfect for use with Radix Form.Control asChild.',
-      },
-    },
-  },
-  render: args => {
-    const [value, setValue] = useState<string>('');
-
-    return <UBSelect {...args} value={value} onValueChange={setValue} />;
-  },
-};
