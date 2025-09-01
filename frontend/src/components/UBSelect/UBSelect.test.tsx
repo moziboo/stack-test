@@ -11,14 +11,16 @@ const sampleOptions = [
 
 describe('UBSelect', () => {
   it('renders select with label', () => {
-    render(<UBSelect options={sampleOptions} label="Choose fruit" onValueChange={vi.fn()} />);
+    render(
+      <UBSelect options={sampleOptions} label="Choose fruit" value="" onValueChange={vi.fn()} />
+    );
 
     expect(screen.getByText('Choose fruit')).toBeInTheDocument();
     expect(screen.getByRole('combobox')).toBeInTheDocument();
   });
 
   it('renders select without label', () => {
-    render(<UBSelect options={sampleOptions} onValueChange={vi.fn()} />);
+    render(<UBSelect options={sampleOptions} value="" onValueChange={vi.fn()} />);
 
     expect(screen.getByRole('combobox')).toBeInTheDocument();
     expect(screen.queryByRole('label')).not.toBeInTheDocument();
@@ -26,7 +28,12 @@ describe('UBSelect', () => {
 
   it('shows placeholder when no value selected', () => {
     render(
-      <UBSelect options={sampleOptions} placeholder="Select a fruit" onValueChange={vi.fn()} />
+      <UBSelect
+        options={sampleOptions}
+        placeholder="Select a fruit"
+        value=""
+        onValueChange={vi.fn()}
+      />
     );
 
     expect(screen.getByText('Select a fruit')).toBeInTheDocument();
@@ -41,7 +48,7 @@ describe('UBSelect', () => {
   it('opens dropdown when clicked', async () => {
     const user = userEvent.setup();
 
-    render(<UBSelect options={sampleOptions} onValueChange={vi.fn()} />);
+    render(<UBSelect options={sampleOptions} value="" onValueChange={vi.fn()} />);
 
     const trigger = screen.getByRole('combobox');
     await user.click(trigger);
@@ -55,7 +62,7 @@ describe('UBSelect', () => {
     const user = userEvent.setup();
     const handleValueChange = vi.fn();
 
-    render(<UBSelect options={sampleOptions} onValueChange={handleValueChange} />);
+    render(<UBSelect options={sampleOptions} value="" onValueChange={handleValueChange} />);
 
     const trigger = screen.getByRole('combobox');
     await user.click(trigger);
@@ -68,14 +75,20 @@ describe('UBSelect', () => {
 
   it('shows required asterisk when required', () => {
     render(
-      <UBSelect options={sampleOptions} label="Required Field" required onValueChange={vi.fn()} />
+      <UBSelect
+        options={sampleOptions}
+        label="Required Field"
+        required
+        value=""
+        onValueChange={vi.fn()}
+      />
     );
 
     expect(screen.getByText('*')).toBeInTheDocument();
   });
 
   it('disables select when disabled prop is true', () => {
-    render(<UBSelect options={sampleOptions} disabled onValueChange={vi.fn()} />);
+    render(<UBSelect options={sampleOptions} disabled value="" onValueChange={vi.fn()} />);
 
     const trigger = screen.getByRole('combobox');
     expect(trigger).toHaveAttribute('data-disabled');
@@ -84,7 +97,7 @@ describe('UBSelect', () => {
   it('applies disabled styles to disabled options', async () => {
     const user = userEvent.setup();
 
-    render(<UBSelect options={sampleOptions} onValueChange={vi.fn()} />);
+    render(<UBSelect options={sampleOptions} value="" onValueChange={vi.fn()} />);
 
     const trigger = screen.getByRole('combobox');
     await user.click(trigger);
@@ -94,16 +107,14 @@ describe('UBSelect', () => {
   });
 
   it('generates unique id when not provided', () => {
-    render(<UBSelect options={sampleOptions} label="Test" onValueChange={vi.fn()} />);
+    render(<UBSelect options={sampleOptions} value="" onValueChange={vi.fn()} />);
 
     const trigger = screen.getByRole('combobox');
     expect(trigger).toHaveAttribute('id');
   });
 
   it('uses provided id when given', () => {
-    render(
-      <UBSelect options={sampleOptions} id="custom-id" label="Test" onValueChange={vi.fn()} />
-    );
+    render(<UBSelect options={sampleOptions} id="custom-id" value="" onValueChange={vi.fn()} />);
 
     const trigger = screen.getByRole('combobox');
     expect(trigger).toHaveAttribute('id', 'custom-id');
@@ -111,13 +122,15 @@ describe('UBSelect', () => {
 
   it('forwards ref correctly', () => {
     const ref = vi.fn();
-    render(<UBSelect ref={ref} options={sampleOptions} onValueChange={vi.fn()} />);
+    render(<UBSelect ref={ref} options={sampleOptions} value="" onValueChange={vi.fn()} />);
 
     expect(ref).toHaveBeenCalled();
   });
 
   it('applies custom className', () => {
-    render(<UBSelect options={sampleOptions} className="custom-class" onValueChange={vi.fn()} />);
+    render(
+      <UBSelect options={sampleOptions} className="custom-class" value="" onValueChange={vi.fn()} />
+    );
 
     const trigger = screen.getByRole('combobox');
     expect(trigger).toHaveClass('custom-class');

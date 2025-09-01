@@ -15,16 +15,6 @@ const sampleOptions = [
   { value: 'fig', label: 'Fig' },
 ];
 
-const countryOptions = [
-  { value: 'us', label: 'United States' },
-  { value: 'ca', label: 'Canada' },
-  { value: 'uk', label: 'United Kingdom' },
-  { value: 'de', label: 'Germany' },
-  { value: 'fr', label: 'France' },
-  { value: 'jp', label: 'Japan' },
-  { value: 'au', label: 'Australia' },
-];
-
 const meta: Meta<UBSelectProps> = {
   title: 'ToReview/UBSelect',
   component: UBSelect,
@@ -94,19 +84,6 @@ export const Disabled: Story = {
   },
   render: args => {
     const [value, setValue] = useState<string>('apple');
-
-    return <UBSelect {...args} value={value} onValueChange={setValue} />;
-  },
-};
-
-export const CountrySelector: Story = {
-  args: {
-    options: countryOptions,
-    label: 'Country',
-    placeholder: 'Select your country...',
-  },
-  render: args => {
-    const [value, setValue] = useState<string>('');
 
     return <UBSelect {...args} value={value} onValueChange={setValue} />;
   },

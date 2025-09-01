@@ -10,8 +10,8 @@ interface SelectOption {
 
 interface UBSelectProps {
   options: SelectOption[];
-  value?: string;
-  onValueChange?: (value: string) => void;
+  value: string;
+  onValueChange: (value: string) => void;
   placeholder?: string;
   label?: string;
   id?: string;
@@ -60,7 +60,7 @@ const UBSelect = forwardRef<React.ElementRef<typeof Select.Root>, UBSelectProps>
         </Select.Trigger>
 
         <Select.Portal>
-          <Select.Content className={styles.content} position="popper" sideOffset={4}>
+          <Select.Content className={styles.content} position="item-aligned" sideOffset={4}>
             <Select.Viewport className={styles.viewport}>
               {options.map(option => (
                 <Select.Item
