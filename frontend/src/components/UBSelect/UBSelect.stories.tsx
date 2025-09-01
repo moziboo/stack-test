@@ -16,7 +16,7 @@ const sampleOptions = [
 ];
 
 const meta: Meta<UBSelectProps> = {
-  title: 'ToReview/UBSelect',
+  title: 'UBSelect',
   component: UBSelect,
   argTypes: {
     label: { control: 'text' },
