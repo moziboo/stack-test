@@ -7,7 +7,7 @@ import { useState } from 'react';
 type UBTextareaProps = ComponentProps<typeof UBTextarea>;
 
 const meta: Meta<UBTextareaProps> = {
-  title: 'ToReview/UBTextarea',
+  title: 'UBTextarea',
   component: UBTextarea,
   argTypes: {
     label: { control: 'text' },
@@ -91,7 +91,6 @@ export const ResizeOptions: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
       <div>
-        <h3>No Resize</h3>
         <UBTextarea
           label="No Resize"
           resize="none"
@@ -101,7 +100,6 @@ export const ResizeOptions: Story = {
       </div>
 
       <div>
-        <h3>Horizontal Resize</h3>
         <UBTextarea
           label="Horizontal Resize"
           resize="horizontal"
@@ -111,7 +109,6 @@ export const ResizeOptions: Story = {
       </div>
 
       <div>
-        <h3>Vertical Resize (Default)</h3>
         <UBTextarea
           label="Vertical Resize"
           resize="vertical"
@@ -121,7 +118,6 @@ export const ResizeOptions: Story = {
       </div>
 
       <div>
-        <h3>Both Directions</h3>
         <UBTextarea
           label="Both Directions"
           resize="both"
@@ -137,18 +133,19 @@ export const DifferentSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div>
-        <h3>Small (2 rows)</h3>
-        <UBTextarea label="Small Textarea" rows={2} placeholder="Small textarea with 2 rows" />
+        <UBTextarea label="Small (2 rows)" rows={2} placeholder="Small textarea with 2 rows" />
       </div>
 
       <div>
-        <h3>Medium (4 rows - default)</h3>
-        <UBTextarea label="Medium Textarea" rows={4} placeholder="Medium textarea with 4 rows" />
+        <UBTextarea
+          label="Medium (4 rows - default)"
+          rows={4}
+          placeholder="Medium textarea with 4 rows"
+        />
       </div>
 
       <div>
-        <h3>Large (8 rows)</h3>
-        <UBTextarea label="Large Textarea" rows={8} placeholder="Large textarea with 8 rows" />
+        <UBTextarea label="Large (8 rows)" rows={8} placeholder="Large textarea with 8 rows" />
       </div>
     </div>
   ),

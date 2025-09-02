@@ -48,7 +48,7 @@ describe('UBTextarea', () => {
 
     const textarea = screen.getByRole('textbox');
     expect(textarea).toBeDisabled();
-    expect(textarea).toHaveClass('disabled');
+    expect(textarea.className).toMatch(/disabled/);
   });
 
   it('applies readOnly styles when readOnly', () => {
@@ -56,14 +56,14 @@ describe('UBTextarea', () => {
 
     const textarea = screen.getByRole('textbox');
     expect(textarea).toHaveAttribute('readonly');
-    expect(textarea).toHaveClass('readOnly');
+    expect(textarea.className).toMatch(/readOnly/);
   });
 
   it('applies resize class correctly', () => {
     render(<UBTextarea resize="none" />);
 
     const textarea = screen.getByRole('textbox');
-    expect(textarea).toHaveClass('none');
+    expect(textarea.className).toMatch(/none/);
   });
 
   it('sets correct number of rows', () => {

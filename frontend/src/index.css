@@ -132,8 +132,3 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-
-/* Hide the resize handle in textareas */
-textarea::-webkit-resizer {
-  display: none;
-}
