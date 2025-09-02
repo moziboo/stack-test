@@ -55,19 +55,15 @@ export const AllVariants: Story = {
 export const AllSpacing: Story = {
   render: () => (
     <div>
-      <strong>No spacing:</strong>
+      No spacing:
       <UBDivider spacing="none" />
-
-      <strong>Small spacing:</strong>
+      Small spacing:
       <UBDivider spacing="sm" />
-
-      <strong>Medium spacing (default):</strong>
+      Medium spacing (default):
       <UBDivider spacing="md" />
-
-      <strong>Large spacing:</strong>
+      Large spacing:
       <UBDivider spacing="lg" />
-
-      <strong>Extra large spacing:</strong>
+      Extra large spacing:
       <UBDivider spacing="xl" />
     </div>
   ),
@@ -76,11 +72,17 @@ export const AllSpacing: Story = {
 export const VerticalDivider: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', height: '100px', gap: '16px' }}>
-      <div>Left content</div>
+      <div>
+        <h3>Left content</h3>
+      </div>
       <UBDivider orientation="vertical" />
-      <div>Middle content</div>
+      <div>
+        <h3>Middle content</h3>
+      </div>
       <UBDivider orientation="vertical" variant="dashed" />
-      <div>Right content</div>
+      <div>
+        <h3>Right content</h3>
+      </div>
     </div>
   ),
 };
