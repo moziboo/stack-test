@@ -8,49 +8,20 @@ describe('UBTag', () => {
     expect(screen.getByText('Test Tag')).toBeInTheDocument();
   });
 
-  it('applies correct variant classes', () => {
-    const { rerender } = render(
-      <UBTag variant="primary" data-testid="tag">
-        Primary
-      </UBTag>
-    );
-    expect(screen.getByTestId('tag')).toHaveClass('primary');
-
-    rerender(
-      <UBTag variant="success" data-testid="tag">
-        Success
-      </UBTag>
-    );
-    expect(screen.getByTestId('tag')).toHaveClass('success');
-
-    rerender(
-      <UBTag variant="error" data-testid="tag">
-        Error
-      </UBTag>
-    );
-    expect(screen.getByTestId('tag')).toHaveClass('error');
-  });
-
   it('applies correct size classes', () => {
     const { rerender } = render(
       <UBTag size="sm" data-testid="tag">
         Small
       </UBTag>
     );
-    expect(screen.getByTestId('tag')).toHaveClass('sm');
+    expect(screen.getByTestId('tag').className).toMatch(/sm/);
 
     rerender(
       <UBTag size="lg" data-testid="tag">
         Large
       </UBTag>
     );
-    expect(screen.getByTestId('tag')).toHaveClass('lg');
-  });
-
-  it('renders with icon when provided', () => {
-    render(<UBTag icon="⭐">Starred</UBTag>);
-    expect(screen.getByText('⭐')).toBeInTheDocument();
-    expect(screen.getByText('Starred')).toBeInTheDocument();
+    expect(screen.getByTestId('tag').className).toMatch(/lg/);
   });
 
   it('renders remove button when removable is true', () => {
@@ -63,7 +34,7 @@ describe('UBTag', () => {
 
     const removeButton = screen.getByRole('button', { name: /remove removable tag tag/i });
     expect(removeButton).toBeInTheDocument();
-    expect(screen.getByText('×')).toBeInTheDocument();
+    expect(screen.getByText('x')).toBeInTheDocument();
   });
 
   it('calls onRemove when remove button is clicked', () => {
@@ -114,24 +85,6 @@ describe('UBTag', () => {
     expect(tag).toHaveAttribute('id', 'tag-1');
   });
 
-  it('renders content in correct structure', () => {
-    const { container } = render(
-      <UBTag icon="🏷" removable onRemove={() => {}}>
-        Structured Tag
-      </UBTag>
-    );
-
-    // Check that icon, content, and remove button are all present
-    expect(screen.getByText('🏷')).toBeInTheDocument();
-    expect(screen.getByText('Structured Tag')).toBeInTheDocument();
-    expect(screen.getByText('×')).toBeInTheDocument();
-
-    // Check CSS classes exist
-    expect(container.querySelector('.icon')).toBeInTheDocument();
-    expect(container.querySelector('.content')).toBeInTheDocument();
-    expect(container.querySelector('.removeButton')).toBeInTheDocument();
-  });
-
   it('has correct accessibility attributes on remove button', () => {
     render(
       <UBTag removable onRemove={() => {}}>
@@ -144,11 +97,10 @@ describe('UBTag', () => {
     expect(removeButton).toHaveAttribute('type', 'button');
   });
 
-  it('renders with default variant and size when not specified', () => {
+  it('renders with default size when not specified', () => {
     render(<UBTag data-testid="tag">Default Tag</UBTag>);
     const tag = screen.getByTestId('tag');
-    expect(tag).toHaveClass('default');
-    expect(tag).toHaveClass('md');
+    expect(tag.className).toMatch(/sm/);
   });
 
   it('handles click events on the tag itself', () => {

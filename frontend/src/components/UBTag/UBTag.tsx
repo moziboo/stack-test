@@ -6,31 +6,13 @@ interface UBTagProps extends React.HTMLAttributes<HTMLSpanElement> {
   size?: 'sm' | 'md' | 'lg';
   removable?: boolean;
   onRemove?: () => void;
-  icon?: React.ReactNode;
   children: React.ReactNode;
 }
 
 const UBTag = forwardRef<HTMLSpanElement, UBTagProps>(
-  (
-    {
-      variant = 'default',
-      size = 'md',
-      removable = false,
-      onRemove,
-      icon,
-      className,
-      children,
-      ...restProps
-    },
-    ref
-  ) => {
+  ({ size = 'sm', removable = false, onRemove, className, children, ...restProps }, ref) => {
     return (
-      <span
-        ref={ref}
-        className={`${styles.tag} ${styles[variant]} ${styles[size]} ${className || ''}`}
-        {...restProps}
-      >
-        {icon && <span className={styles.icon}>{icon}</span>}
+      <span ref={ref} className={`${styles.tag} ${styles[size]} ${className || ''}`} {...restProps}>
         <span className={styles.content}>{children}</span>
         {removable && onRemove && (
           <button
@@ -39,7 +21,7 @@ const UBTag = forwardRef<HTMLSpanElement, UBTagProps>(
             onClick={onRemove}
             aria-label={`Remove ${children} tag`}
           >
-            <span className={styles.removeIcon}>×</span>
+            <span className={styles.removeIcon}>x</span>
           </button>
         )}
       </span>
